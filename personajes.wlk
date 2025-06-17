@@ -45,10 +45,11 @@ class Localidad {
   var ejercito
   method ejercito() = ejercito
   method poderDefensivo() = ejercito.poderOfensivo()
+  method serOcupada(unEjercito)
 }
 class Aldea inherits Localidad{
   const cantHabitanesMaxima
-  method serOcupada(unEjercito){
+  override method serOcupada(unEjercito){
     if(unEjercito.personajes().size() > cantHabitanesMaxima) {
       ejercito = unEjercito.ejercitoMasFuertes()
     }
@@ -59,7 +60,7 @@ class Aldea inherits Localidad{
 }
 class Ciudad inherits Localidad{
   override method poderDefensivo() = super() + 300
-  method serOcupada(unEjercito){
+  override method serOcupada(unEjercito){
     ejercito = unEjercito
   }
 }
